@@ -1,0 +1,8 @@
+---
+- name: Remove RabbitMQ Guest User
+  become: true
+  rabbitmq_user:
+    user: guest
+    state: absent
+  notify:
+    - Restart RabbitMQ Service

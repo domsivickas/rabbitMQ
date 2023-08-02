@@ -1,0 +1,9 @@
+---
+- name: Modify RabbitMQ Open Files Limit
+  become: true
+  sysctl:
+    name: "fs.file-max"
+    value: "100000"
+    state: present
+  notify:
+    - Restart RabbitMQ Service

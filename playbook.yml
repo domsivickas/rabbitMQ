@@ -1,0 +1,18 @@
+---
+- name: Check YAML files with yamllint
+  hosts: localhost
+  gather_facts: false
+
+  tasks:
+    - name: Check YAML files with yamllint
+      shell: find ./ -type f -name "*.yml" -exec yamllint {} +
+      changed_when: false
+      register: yamllint_output
+      ignore_errors: true
+
+- name: Install and Configure RabbitMQ
+  hosts: test
+  become: true
+  roles:
+    - rabbitmq
+    - firewall

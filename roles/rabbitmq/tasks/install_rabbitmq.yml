@@ -1,0 +1,26 @@
+---
+- name: Update package repositories
+  become: true
+  apt:
+    update_cache: true
+
+- name: Install RabbitMQ
+  become: true
+  apt:
+    name: rabbitmq-server
+    state: present
+
+- name: Enable RabbitMQ Management Plugin
+  become: true
+  command: rabbitmq-plugins enable rabbitmq_management
+  args:
+    executable: /path/to/rabbitmq-plugins
+  notify:
+    - Restart RabbitMQ Service
+
+- name: Start and Enable RabbitMQ Service
+  become: true
+  service:
+    name: rabbitmq-server
+    state: started
+    enabled: true

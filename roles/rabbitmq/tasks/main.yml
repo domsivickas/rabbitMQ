@@ -1,0 +1,6 @@
+---
+- include_tasks: install_rabbitmq.yml
+- include_tasks: remove_guest_user.yml
+- include_tasks: create_user_and_vhost.yml
+- include_tasks: modify_openfiles_limit.yml
+- include_tasks: run_script.yml

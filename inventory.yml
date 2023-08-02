@@ -1,0 +1,6 @@
+---
+all:
+  hosts:
+    test:
+      ansible_host: server_ip
+      ansible_user: root

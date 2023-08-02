@@ -1,0 +1,18 @@
+---
+
+- name: Create RabbitMQ Virtual Host
+  become: true
+  rabbitmq_vhost:
+    name: testing
+
+- name: Create RabbitMQ User
+  become: true
+  rabbitmq_user:
+    user: "{{ rabbitmq_user }}"
+    password: "{{ rabbitmq_password }}"
+    vhost: "{{ rabbitmq_vhost }}"
+    configure_priv: '.*'
+    write_priv: '.*'
+    read_priv: '.*'
+  notify:
+    - Restart RabbitMQ Service
