@@ -1,5 +1,5 @@
 ---
-rabbitmq_user: service
+rabbitmq_user: test
 rabbitmq_password: !vault |
       $ANSIBLE_VAULT;1.1;AES256
       38666636316236396465383465393036656330393139363134323765313636346233626434336436
